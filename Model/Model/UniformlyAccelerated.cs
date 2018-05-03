@@ -6,18 +6,32 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class UniformlyAccelerated
+    // Равноускоренное движение
+    public class UniformlyAccelerated : IMovement
     {
         private double _initialCoordinate;
         private int _time;
         private double _initialSpeed;
-        private double _acceleration;
+        private double _acceleration;  // Ускорение
+
+        public UniformlyAccelerated(double initialCoordinate, int time, double initialSpeed, double acceleration)
+        {
+            InitialCoordinate = initialCoordinate;
+            Time = time;
+            Speed = initialSpeed;
+            InitialAcceleration = acceleration;
+        }
+
+        public double InitialCoordinate
+        {
+            get { return _initialCoordinate; }
+            set { _initialCoordinate = value; }
+        }
 
         public int Time
         {
             get { return _time; }
-
-            private set
+            set
             {
                 if (value < 0)
                 {
@@ -30,8 +44,7 @@ namespace Model
         public double Speed
         {
             get { return _initialSpeed; }
-
-            private set
+            set
             {
                 if (value < 0)
                 {
@@ -41,9 +54,15 @@ namespace Model
             }
         }
 
-        public double CalculateNewCoordinate(double initialCoordinate, int time, double initialSpeed, double acceleration)
+        public double InitialAcceleration
         {
-            double newCoordinate = initialCoordinate + initialSpeed * time + 1/2 * acceleration * time * time;
+            get { return _acceleration; }
+            set { _acceleration = value; }
+        }
+
+        public double CalculateNewCoordinate()
+        {
+            double newCoordinate = this._initialCoordinate + this._initialSpeed * this._time + 1.0 / 2 * this._acceleration * Math.Pow(this._time, 2); 
             return newCoordinate;
         }
     }
