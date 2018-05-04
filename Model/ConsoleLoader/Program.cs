@@ -4,105 +4,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
-using System.Runtime.InteropServices; // Для getch
 
 namespace Model
 {
     class Program
     {
-        [DllImport("msvcrt")]
-        static extern char _getch();
-
+        /// <summary>
+        /// Метод для демонстрации корректной работы бизнес-логики
+        /// </summary>
         static void Main()
         {
-            char key;
-            int ascii = 0;
+            double initialCoordinate = 23, speed = 4.1, acceleration = -5;
+            double amplitude = 6, frequency = 22.3, initialPhase = -30;
+            int time = 11;
             
-            while (ascii != 27)
-            {
-                try
-                {
-                    Console.Clear();
 
-                    Console.WriteLine("Нажмите...");
-                    Console.WriteLine(" '1'  - Демонстрация расчета координаты при прямолинейном движении;");
-                    Console.WriteLine(" '2'  - Демонстрация расчета координаты при равноускоренном движении;");
-                    Console.WriteLine(" '3'  - Демонстрация расчета координаты при колебательном движении;");
-                    Console.WriteLine("'Esc' - Для выхода из программы...");
-                    Console.WriteLine("----------------------------------------------------------------------\n");
+            IMovement solid1 = new UniformlyMovement(initialCoordinate, speed);
+            double newSolid1 = solid1.CalculateNewCoordinate(time);
 
-                    key = _getch();
-                    ascii = key;
+            Console.WriteLine("Демонстрация расчета координаты при прямолинейном движении\n");
+            Console.WriteLine("Начальная координата X = {0};\nСкорость (в м/с) = {1};\nВремя (в сек.) = {2};\n", initialCoordinate, speed, time);
+            Console.WriteLine("Значение новой координаты Х: " + newSolid1);
+            Console.WriteLine("----------------------------------------------------------");
+          
+            IMovement solid2 = new UniformlyAcceleratedMovement(initialCoordinate, speed, acceleration);
+            double newSolid2 = solid2.CalculateNewCoordinate(time);
 
-                    switch (ascii)
-                    {
-                        case '1':
-                            {
-                                Console.WriteLine("Введите начальную координату Х");
-                                double coordinate = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Введите время в секундах");
-                                int time = Convert.ToInt32(Console.ReadLine());
-                                Console.WriteLine("Введите скорость");
-                                double speed = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Демонстрация расчета координаты при равноускоренном движении\n");
+            Console.WriteLine("Начальная координата X = {0};\nСкорость (в м/с) = {1};\nУскорение = {2};\n", initialCoordinate, speed, acceleration);
+            Console.WriteLine("Значение новой координаты Х: " + newSolid2);
+            Console.WriteLine("----------------------------------------------------------");
 
-                                IMovement solid = new Uniformly(coordinate, time, speed);
-                                double newSolid = solid.CalculateNewCoordinate();
-                                Console.WriteLine("Значение новой координаты Х: " + newSolid);
+            
+            IMovement solid3 = new OscillatoryMovement(amplitude, frequency, initialPhase);
+            double newSolid3 = solid3.CalculateNewCoordinate(time);
 
-                                Console.ReadKey();
-                                break;
-                            }
-                        case '2':
-                            {
-                                Console.WriteLine("Введите начальную координату Х");
-                                double coordinate = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Введите время в секундах");
-                                int time = Convert.ToInt32(Console.ReadLine());
-                                Console.WriteLine("Введите начальную скорость");
-                                double speed = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Введите ускорение");
-                                double acceleration = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Демонстрация расчета координаты при колебательном движении\n");
+            Console.WriteLine("Амплитуда = {0};\nНачальная фаза (в градусах) = {1};\nЧастота = {2};\nВремя (в сек.) = {3};\n", amplitude, initialPhase, frequency, time);
+            Console.WriteLine("Значение новой координаты Х: " + newSolid3);
+            Console.WriteLine("----------------------------------------------------------");
 
-                                IMovement solid = new UniformlyAccelerated(coordinate, time, speed, acceleration);
-                                double newSolid = solid.CalculateNewCoordinate();
-                                Console.WriteLine("Значение новой координаты Х: " + newSolid);
-
-                                Console.ReadKey();
-                                break;
-                            }
-                        case '3':
-                            {
-                                Console.WriteLine("Введите амплитуду");
-                                double amplitude = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Введите частоту");
-                                double cyclicFrequency = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Введите время в секундах");
-                                int time = Convert.ToInt32(Console.ReadLine());
-                                Console.WriteLine("Введите начальную фазу");
-                                double initialPhase = Convert.ToDouble(Console.ReadLine());
-
-                                IMovement solid = new Oscillatory(amplitude, cyclicFrequency, time, initialPhase);
-                                double newSolid = solid.CalculateNewCoordinate();
-                                Console.WriteLine("Значение новой координаты Х: " + newSolid);
-
-                                Console.ReadKey();
-                                break;
-                            }
-                        default:
-                            {
-                                Console.WriteLine("Некорректное значение");
-                                Console.ReadKey();
-                                break;
-                            }
-                    }
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Несоответсвие типа");
-                    Console.ReadKey();
-                }
-                
-            }
+            Console.ReadKey();
         }
     }
 }

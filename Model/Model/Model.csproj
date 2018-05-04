@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Uniformly.cs" />
-    <Compile Include="UniformlyAccelerated.cs" />
-    <Compile Include="Oscillatory.cs" />
+    <Compile Include="UniformlyMovement.cs" />
+    <Compile Include="UniformlyAcceleratedMovement.cs" />
+    <Compile Include="OscillatoryMovement.cs" />
     <Compile Include="IMovement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
