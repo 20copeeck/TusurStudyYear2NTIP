@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{BA40A134-7D36-43A0-A444-1943DF817776}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{6B417B27-30F6-45D3-A826-4D793FF0968F}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLoader", "ConsoleLoader\ConsoleLoader.csproj", "{C6C37EF0-13A1-418A-91A6-1B390FF70DEE}"
 EndProject
 Global
@@ -17,6 +19,10 @@ Global
 		{BA40A134-7D36-43A0-A444-1943DF817776}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA40A134-7D36-43A0-A444-1943DF817776}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA40A134-7D36-43A0-A444-1943DF817776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B417B27-30F6-45D3-A826-4D793FF0968F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B417B27-30F6-45D3-A826-4D793FF0968F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B417B27-30F6-45D3-A826-4D793FF0968F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B417B27-30F6-45D3-A826-4D793FF0968F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C6C37EF0-13A1-418A-91A6-1B390FF70DEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C6C37EF0-13A1-418A-91A6-1B390FF70DEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6C37EF0-13A1-418A-91A6-1B390FF70DEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
