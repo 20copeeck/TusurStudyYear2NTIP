@@ -9,6 +9,7 @@ namespace Model
     /// <summary>
     /// Равноускоренное движение
     /// </summary>
+    [Serializable]
     public class UniformlyAcceleratedMovement : IMovement
     {
         /// <summary>

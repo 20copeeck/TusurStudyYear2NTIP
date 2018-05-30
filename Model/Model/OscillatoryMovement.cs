@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+
     /// <summary>
     /// Колебательное движение
     /// </summary>
+    [Serializable]
     public class OscillatoryMovement : IMovement
     {
         /// <summary>
