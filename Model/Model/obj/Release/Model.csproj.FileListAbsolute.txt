@@ -1,0 +1,5 @@
+D:\NTVP\Labs\Model\Model\bin\Release\Model.dll
+D:\NTVP\Labs\Model\Model\bin\Release\Model.pdb
+D:\NTVP\Labs\Model\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
+D:\NTVP\Labs\Model\Model\obj\Release\Model.dll
+D:\NTVP\Labs\Model\Model\obj\Release\Model.pdb

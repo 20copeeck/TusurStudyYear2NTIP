@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
+using System.IO;
 
 namespace View
 {
@@ -20,7 +21,10 @@ namespace View
         {
             InitializeComponent();
             _moverment = new List<IMovement>();
-            _addObjectForm = new AddObjectForm();
+            _addObjectForm = new AddObjectForm(bindingSource);
+
+            bindingSource.DataSource = _moverment;
+            dataGridView1.DataSource = bindingSource;
         }
 
         private void AddSolid_Click(object sender, EventArgs e)
@@ -30,8 +34,16 @@ namespace View
 
         private void RemoveSolid_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.SelectedCells[0].RowIndex;
-            dataGridView1.Rows.RemoveAt(index);
+            if (dataGridView1.CurrentCellAddress.Y >= 0)
+            {
+                int index = dataGridView1.SelectedCells[0].RowIndex;
+                dataGridView1.Rows.RemoveAt(index);
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

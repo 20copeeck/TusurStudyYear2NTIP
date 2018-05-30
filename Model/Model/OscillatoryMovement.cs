@@ -23,6 +23,10 @@ namespace Model
         /// Начальная фаза в градусах
         /// </summary>
         private double _initialPhase;
+        /// <summary>
+        /// Время в сек.
+        /// </summary>
+        private double _time;
 
         /// <summary>
         /// Конструктор класса
@@ -30,11 +34,13 @@ namespace Model
         /// <param name="amplitude">Амплитуда</param>
         /// <param name="frequency">Частота</param>
         /// <param name="initialPhase">Начальная фаза в градусах</param>
-        public OscillatoryMovement(double amplitude, double frequency, double initialPhase)
+        /// <param name="time">Время в сек.</param>
+        public OscillatoryMovement(double amplitude, double frequency, double initialPhase, double time)
         {
             Amplitude = amplitude;
             Frequency = frequency;
             InitialPhase = initialPhase;
+            Time = time;
         }
 
         /// <summary>
@@ -79,14 +85,39 @@ namespace Model
         }
 
         /// <summary>
-        /// Вычисление новой координаты
+        /// Получить или вернуть время
         /// </summary>
-        /// <param name="time">Время в секундах</param>
-        /// <returns>Значение новой координаты</returns>
-        public double CalculateNewCoordinate(int time)
+        public double Time
         {
-            double newCoordinate = this._amplitude * Math.Cos((this._frequency * time + this._initialPhase) * 180 / Math.PI);
-            return newCoordinate;
+            get { return _time; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Время не может быть отрицательным!");
+                }
+                _time = value;
+            }
+        }
+
+        /// <summary>
+        /// Получить новую координату
+        /// </summary>
+        public double NewCoordinate
+        {
+            get
+            {
+                double newCoordinate = this._amplitude * Math.Cos((this._frequency * this._time + this._initialPhase) * 180 / Math.PI);
+                return newCoordinate;
+            }
+        }
+
+        /// <summary>
+        /// Получить тип движения
+        /// </summary>
+        public string Type
+        {
+            get { return "Колебательное движение"; }
         }
     }
 }

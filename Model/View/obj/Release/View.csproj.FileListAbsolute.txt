@@ -1,0 +1,13 @@
+D:\NTVP\Labs\Model\View\bin\Release\View.exe.config
+D:\NTVP\Labs\Model\View\bin\Release\View.exe
+D:\NTVP\Labs\Model\View\bin\Release\View.pdb
+D:\NTVP\Labs\Model\View\bin\Release\Model.dll
+D:\NTVP\Labs\Model\View\bin\Release\Model.pdb
+D:\NTVP\Labs\Model\View\obj\Release\View.csprojResolveAssemblyReference.cache
+D:\NTVP\Labs\Model\View\obj\Release\View.AddObjectForm.resources
+D:\NTVP\Labs\Model\View\obj\Release\View.CalculationCoordinatesForm.resources
+D:\NTVP\Labs\Model\View\obj\Release\View.Properties.Resources.resources
+D:\NTVP\Labs\Model\View\obj\Release\View.csproj.GenerateResource.Cache
+D:\NTVP\Labs\Model\View\obj\Release\View.csproj.CoreCompileInputs.cache
+D:\NTVP\Labs\Model\View\obj\Release\View.exe
+D:\NTVP\Labs\Model\View\obj\Release\View.pdb

@@ -19,16 +19,22 @@ namespace Model
         /// Скорость в м/с
         /// </summary>
         private double _speed;
+        /// <summary>
+        /// Время в сек.
+        /// </summary>
+        private double _time;
 
         /// <summary>
         /// Конструктор класса
         /// </summary>
         /// <param name="initialCoordinate">Начальная координата</param>
         /// <param name="speed">Скорость в м/с</param>
-        public UniformlyMovement(double initialCoordinate, double speed)
+        /// <param name="time">Время в сек.</param>
+        public UniformlyMovement(double initialCoordinate, double speed, double time)
         {
             InitialCoordinate = initialCoordinate;
             Speed = speed;
+            Time = time;
         }
 
         /// <summary>
@@ -57,14 +63,39 @@ namespace Model
         }
 
         /// <summary>
-        /// Вычисление новой координаты
+        /// Получить или вернуть время
         /// </summary>
-        /// <param name="time">Время в секудах</param>
-        /// <returns>Значение новой координаты</returns>
-        public double CalculateNewCoordinate(int time)
+        public double Time
         {
-            double newCoordinate = this._initialCoordinate + time * this._speed;
-            return newCoordinate;
+            get { return _time; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Время не может быть отрицательным!");
+                }
+                _time = value;
+            }
+        }
+
+        /// <summary>
+        /// Получить новую координату
+        /// </summary>
+        public double NewCoordinate
+        {
+            get
+            {
+                double newCoordinate = this._initialCoordinate + this._time * this._speed;
+                return newCoordinate;
+            }
+        }
+
+        /// <summary>
+        /// Получить тип движения
+        /// </summary>
+        public string Type
+        {
+            get { return "Равномерное движение"; }
         }
     }
 }
