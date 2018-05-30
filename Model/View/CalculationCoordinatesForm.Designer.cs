@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.RemoveSolid = new System.Windows.Forms.Button();
             this.AddSolid = new System.Windows.Forms.Button();
@@ -43,6 +43,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.searchButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip.SuspendLayout();
@@ -51,6 +52,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.searchButton);
             this.groupBox1.Controls.Add(this.RemoveSolid);
             this.groupBox1.Controls.Add(this.AddSolid);
             this.groupBox1.Controls.Add(this.dataGridView1);
@@ -63,7 +65,7 @@
             // 
             // RemoveSolid
             // 
-            this.RemoveSolid.Location = new System.Drawing.Point(389, 54);
+            this.RemoveSolid.Location = new System.Drawing.Point(389, 87);
             this.RemoveSolid.Name = "RemoveSolid";
             this.RemoveSolid.Size = new System.Drawing.Size(137, 27);
             this.RemoveSolid.TabIndex = 2;
@@ -73,7 +75,7 @@
             // 
             // AddSolid
             // 
-            this.AddSolid.Location = new System.Drawing.Point(389, 21);
+            this.AddSolid.Location = new System.Drawing.Point(389, 54);
             this.AddSolid.Name = "AddSolid";
             this.AddSolid.Size = new System.Drawing.Size(137, 27);
             this.AddSolid.TabIndex = 1;
@@ -87,15 +89,15 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.AppWorkspace;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(6, 21);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -157,6 +159,16 @@
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(389, 21);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(137, 27);
+            this.searchButton.TabIndex = 3;
+            this.searchButton.Text = "Поиск";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
             // CalculationCoordinatesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -192,6 +204,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button searchButton;
     }
 }
 

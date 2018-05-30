@@ -13,6 +13,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace View
 {
+    /// <summary>
+    /// Главная форма
+    /// </summary>
     public partial class CalculationCoordinatesForm : Form
     {
         /// <summary>
@@ -20,14 +23,30 @@ namespace View
         /// </summary>
         private BinaryFormatter _formatter;
 
+        /// <summary>
+        /// Список типов движений
+        /// </summary>
         List<IMovement> _moverment;
+
+        /// <summary>
+        /// Форма добавления нового объекта
+        /// </summary>
         AddObjectForm _addObjectForm;
 
+        /// <summary>
+        /// Форма для поиска по объектам
+        /// </summary>
+        SearchForm _searchForm;
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public CalculationCoordinatesForm()
         {
             InitializeComponent();
             _moverment = new List<IMovement>();
             _addObjectForm = new AddObjectForm(bindingSource);
+            _searchForm = new SearchForm(_moverment);
 
             bindingSource.DataSource = _moverment;
             dataGridView1.DataSource = bindingSource;
@@ -36,11 +55,21 @@ namespace View
             _formatter = new BinaryFormatter();
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на кнопку добавления объекта
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void AddSolid_Click(object sender, EventArgs e)
         {
             _addObjectForm.ShowDialog();
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на кнопку удаления объекта
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void RemoveSolid_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentCellAddress.Y >= 0)
@@ -51,7 +80,7 @@ namespace View
         }
 
         /// <summary>
-        /// Инициализация Файл Диалогов
+        /// Инициализация файл диалогов
         /// </summary>
         private void InitializeFileDialogs()
         {
@@ -64,24 +93,22 @@ namespace View
             InitializeFileDialog(openFileDialog);
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на кнопку файл->открыть
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = openFileDialog.ShowDialog();
-            if (result == DialogResult.Cancel)
-            {
-                MessageBox.Show("Открытие отменено!", "Открыть", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
 
             if (result == DialogResult.OK)
             {
                 try
                 {
-                    FileStream fileStream = new FileStream(openFileDialog.FileName,
-                    FileMode.OpenOrCreate);
+                    FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.OpenOrCreate);
 
-                    List<IMovement> deserilizeSalarys = (List<IMovement>)_formatter.
-                        Deserialize(fileStream);
+                    List<IMovement> deserilizeSalarys = (List<IMovement>)_formatter.Deserialize(fileStream);
 
                     bindingSource.Clear();
 
@@ -98,21 +125,20 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на кнопку файл->сохранить
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = saveFileDialog.ShowDialog();
-            if (result == DialogResult.Cancel)
-            {
-                MessageBox.Show("Сохранение отменено!", "Сохранить", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
+            
             if (result == DialogResult.OK)
             {
                 try
                 {
-                    FileStream fileStream = new FileStream(saveFileDialog.FileName,
-                    FileMode.OpenOrCreate);
+                    FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate);
 
                     _formatter.Serialize(fileStream, _moverment);
                     fileStream.Dispose();
@@ -124,6 +150,16 @@ namespace View
                     MessageBox.Show(exception.Message);
                 }
             }
+        }
+
+        /// <summary>
+        /// Обработчик события нажатия на кнопку поиска
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            _searchForm.ShowDialog();
         }
     }
 }

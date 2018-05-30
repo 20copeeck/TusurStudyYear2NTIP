@@ -11,10 +11,20 @@ using Model;
 
 namespace View
 {
+    /// <summary>
+    /// Форма добавления объектов движения
+    /// </summary>
     public partial class AddObjectForm : Form
     {
+        /// <summary>
+        /// Источник данных
+        /// </summary>
         private BindingSource _bindingSource;
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="bindingSource">Источник данных</param>
         public AddObjectForm(BindingSource bindingSource)
         {  
             InitializeComponent();
@@ -25,6 +35,11 @@ namespace View
 #endif
         }
 
+        /// <summary>
+        /// Обработчик события выбора из списка разновидности движения
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void SelectMovementBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SelectMovementBox.Text == "Равномерное")
@@ -48,11 +63,21 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на кнопку закрыть
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void Cansel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// Обработчик события относящихся к форме добавления объектов
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void AddObjectForm_Load(object sender, EventArgs e)
         {
             this.Width = 344;
@@ -61,6 +86,11 @@ namespace View
             groupBox2.Location = new System.Drawing.Point(12, 89);
         }
 
+        /// <summary>
+        /// Обрабочик события нажатия на кнопку принять
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void okButton_Click(object sender, EventArgs e)
         {
             IMovement movement;
@@ -81,6 +111,11 @@ namespace View
             _bindingSource.Add(movement);
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на кнопку генерирования случайных данных
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void createRandomDataButton_Click(object sender, EventArgs e)
         {
             Random random = new Random();
