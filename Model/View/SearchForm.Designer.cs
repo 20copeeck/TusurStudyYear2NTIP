@@ -37,7 +37,7 @@
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(121, 83);
+            this.closeButton.Location = new System.Drawing.Point(233, 83);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(83, 40);
             this.closeButton.TabIndex = 0;
@@ -47,7 +47,7 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(32, 83);
+            this.searchButton.Location = new System.Drawing.Point(25, 83);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(83, 40);
             this.searchButton.TabIndex = 1;
@@ -58,7 +58,7 @@
             // searchNumericUpDown
             // 
             this.searchNumericUpDown.DecimalPlaces = 2;
-            this.searchNumericUpDown.Location = new System.Drawing.Point(98, 25);
+            this.searchNumericUpDown.Location = new System.Drawing.Point(223, 25);
             this.searchNumericUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -70,7 +70,7 @@
             0,
             -2147483648});
             this.searchNumericUpDown.Name = "searchNumericUpDown";
-            this.searchNumericUpDown.Size = new System.Drawing.Size(120, 22);
+            this.searchNumericUpDown.Size = new System.Drawing.Size(93, 22);
             this.searchNumericUpDown.TabIndex = 2;
             // 
             // label1
@@ -78,15 +78,15 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(22, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.Size = new System.Drawing.Size(184, 17);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Найти";
+            this.label1.Text = "Найти координату больше";
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 133);
+            this.ClientSize = new System.Drawing.Size(343, 133);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchNumericUpDown);
             this.Controls.Add(this.searchButton);

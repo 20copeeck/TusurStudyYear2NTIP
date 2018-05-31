@@ -54,22 +54,12 @@ namespace View
             InitializeFileDialogs();
             _formatter = new BinaryFormatter();
         }
-
-        /// <summary>
-        /// Обработчик события нажатия на кнопку добавления объекта
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+               
         private void AddSolid_Click(object sender, EventArgs e)
         {
             _addObjectForm.ShowDialog();
         }
-
-        /// <summary>
-        /// Обработчик события нажатия на кнопку удаления объекта
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+                
         private void RemoveSolid_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentCellAddress.Y >= 0)
@@ -92,12 +82,7 @@ namespace View
             InitializeFileDialog(saveFileDialog);
             InitializeFileDialog(openFileDialog);
         }
-
-        /// <summary>
-        /// Обработчик события нажатия на кнопку файл->открыть
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+               
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = openFileDialog.ShowDialog();
@@ -124,12 +109,7 @@ namespace View
                 }
             }
         }
-
-        /// <summary>
-        /// Обработчик события нажатия на кнопку файл->сохранить
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+                
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = saveFileDialog.ShowDialog();
@@ -151,12 +131,7 @@ namespace View
                 }
             }
         }
-
-        /// <summary>
-        /// Обработчик события нажатия на кнопку поиска
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+       
         private void searchButton_Click(object sender, EventArgs e)
         {
             _searchForm.ShowDialog();

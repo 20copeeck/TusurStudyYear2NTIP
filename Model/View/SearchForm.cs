@@ -30,36 +30,25 @@ namespace View
             InitializeComponent();
             _movement = movement;
         }
-
-        /// <summary>
-        /// Обработчик события нажатия кнопки закрыть
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+               
         private void closeButton_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        /// <summary>
-        /// Обработчик события нажатия на кнопку поиска
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+                
         private void searchButton_Click(object sender, EventArgs e)
         {
-            double coordinate;
-            string info = string.Empty;
+            var selectedItem = from m in _movement
+                               where m.NewCoordinate > (double)searchNumericUpDown.Value
+                               select m;
+            string info = String.Empty;
 
+            foreach ( IMovement movement in selectedItem)
+            {
+                info += movement.Type + " " + movement.NewCoordinate + "\r\n";
+            }
 
-            if (!String.IsNullOrWhiteSpace(info))
-            {
-                MessageBox.Show(info, "Найдено", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-            else
-            {
-                MessageBox.Show("Ничего не найдено", "Поиск", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
+            MessageBox.Show(info);
         }
     }
 }

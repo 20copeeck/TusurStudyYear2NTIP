@@ -34,12 +34,7 @@ namespace View
             createRandomDataButton.Visible = true;
 #endif
         }
-
-        /// <summary>
-        /// Обработчик события выбора из списка разновидности движения
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+                
         private void SelectMovementBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SelectMovementBox.Text == "Равномерное")
@@ -62,22 +57,12 @@ namespace View
                 groupBox1.Visible = false;
             }
         }
-
-        /// <summary>
-        /// Обработчик события нажатия на кнопку закрыть
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+                
         private void Cansel_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        /// <summary>
-        /// Обработчик события относящихся к форме добавления объектов
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+        
         private void AddObjectForm_Load(object sender, EventArgs e)
         {
             this.Width = 344;
@@ -85,12 +70,7 @@ namespace View
 
             groupBox2.Location = new System.Drawing.Point(12, 89);
         }
-
-        /// <summary>
-        /// Обрабочик события нажатия на кнопку принять
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+                
         private void okButton_Click(object sender, EventArgs e)
         {
             IMovement movement;
@@ -110,12 +90,7 @@ namespace View
 
             _bindingSource.Add(movement);
         }
-
-        /// <summary>
-        /// Обработчик события нажатия на кнопку генерирования случайных данных
-        /// </summary>
-        /// <param name="sender">Отправитель события</param>
-        /// <param name="e">Аргументы события</param>
+                
         private void createRandomDataButton_Click(object sender, EventArgs e)
         {
             Random random = new Random();
