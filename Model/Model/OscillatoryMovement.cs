@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
@@ -10,24 +11,28 @@ namespace Model
     /// <summary>
     /// Колебательное движение
     /// </summary>
-    [Serializable]
+    [DataContract]
     public class OscillatoryMovement : IMovement
     {
         /// <summary>
         /// Амплитуда
         /// </summary>
+        [DataMember]
         private double _amplitude;
         /// <summary>
         /// Частота
         /// </summary>
+        [DataMember]
         private double _frequency;
         /// <summary>
         /// Начальная фаза в градусах
         /// </summary>
+        [DataMember]
         private double _initialPhase;
         /// <summary>
         /// Время в сек.
         /// </summary>
+        [DataMember]
         private double _time;
 
         /// <summary>

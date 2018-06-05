@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Равномерное движение
     /// </summary>
-    [Serializable]
+    [DataContract]
     public class UniformlyMovement : IMovement
     {
         /// <summary>
         /// Начальная координата
         /// </summary>
+        [DataMember]
         private double _initialCoordinate;
         /// <summary>
         /// Скорость в м/с
         /// </summary>
+        [DataMember]
         private double _speed;
         /// <summary>
         /// Время в сек.
         /// </summary>
+        [DataMember]
         private double _time;
 
         /// <summary>

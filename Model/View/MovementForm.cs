@@ -14,27 +14,42 @@ namespace View
     /// <summary>
     /// Форма добавления объектов движения
     /// </summary>
-    public partial class AddObjectForm : Form
+    public partial class MovementForm : Form
     {
         /// <summary>
-        /// Источник данных
+        /// Движение
         /// </summary>
-        private BindingSource _bindingSource;
-
+        public IMovement movement { get; private set; }
+                
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="bindingSource">Источник данных</param>
-        public AddObjectForm(BindingSource bindingSource)
+        public MovementForm()
         {  
             InitializeComponent();
-            _bindingSource = bindingSource;
-
-#if DEBUG
-            createRandomDataButton.Visible = true;
-#endif
         }
-                
+
+        /// <summary>
+        /// Метод очищающий все элементы на форме и закрывающий ее
+        /// </summary>
+        private void Cleaner()
+        {
+            groupBox1.Visible = false;
+            groupBox2.Visible = false;
+
+            timeNumericUpDown.Value = 0.01m;
+            initialCoordinateNumericUpDown.Value = 0;
+            speedNumericUpDown.Value = 0.01m;
+            accelerationNumericUpDown.Value = 0.01m;
+            amplitudeNumericUpDown.Value = 0.01m;
+            frequencyNumericUpDown.Value = 0.01m;
+            initialPhaseNumericUpDown.Value = 0;
+            SelectMovementBox.SelectedIndex = -1;
+
+            Close();
+        }
+
         private void SelectMovementBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SelectMovementBox.Text == "Равномерное")
@@ -60,23 +75,32 @@ namespace View
                 
         private void Cansel_Click(object sender, EventArgs e)
         {
-            Close();
+            Cleaner();
         }
         
         private void AddObjectForm_Load(object sender, EventArgs e)
         {
-            this.Width = 344;
-            this.Height = 353;
-
+            this.Width = 353;
+            this.Height = 309;
             groupBox2.Location = new System.Drawing.Point(12, 89);
+
+            SelectMovementBox.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+            timeNumericUpDown.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+            groupBox1.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
+            groupBox2.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
+            okButton.Anchor = (AnchorStyles.Right | AnchorStyles.Bottom);
+            Cansel.Anchor = (AnchorStyles.Right | AnchorStyles.Bottom);
         }
                 
         private void okButton_Click(object sender, EventArgs e)
         {
-            IMovement movement;
-
             if (SelectMovementBox.Text == "Равномерное")
             {
+                double result;
+                if (Double.TryParse(initialCoordinateNumericUpDown.Text, out result) == false)
+                {
+
+                }
                 movement = new UniformlyMovement(Convert.ToDouble(initialCoordinateNumericUpDown.Text), Convert.ToDouble(speedNumericUpDown.Text), Convert.ToDouble(timeNumericUpDown.Text));
             }
             else if (SelectMovementBox.Text == "Равноускоренное")
@@ -87,47 +111,17 @@ namespace View
             {
                 movement = new OscillatoryMovement(Convert.ToDouble(amplitudeNumericUpDown.Text), Convert.ToDouble(frequencyNumericUpDown.Text), Convert.ToDouble(initialPhaseNumericUpDown.Text), Convert.ToDouble(timeNumericUpDown.Text));
             }
-
-            _bindingSource.Add(movement);
+            Cleaner();
         }
-                
-        private void createRandomDataButton_Click(object sender, EventArgs e)
-        {
-            Random random = new Random();
-            string value;
 
-            if (SelectMovementBox.Text == "Равномерное")
-            {
-                value = Convert.ToString(random.Next(-500, 700));
-                initialCoordinateNumericUpDown.Text = value;
-                value = Convert.ToString(random.Next(0, 600));
-                timeNumericUpDown.Text = value;
-                value = Convert.ToString(random.Next(0, 800));
-                speedNumericUpDown.Text = value;
-            }
-            else if (SelectMovementBox.Text == "Равноускоренное")
-            {
-                value = Convert.ToString(random.Next(-500, 700));
-                initialCoordinateNumericUpDown.Text = value;
-                value = Convert.ToString(random.Next(0, 600));
-                timeNumericUpDown.Text = value;
-                value = Convert.ToString(random.Next(0, 800));
-                speedNumericUpDown.Text = value;
-                value = Convert.ToString(random.Next(0, 901));
-                accelerationNumericUpDown.Text = value;
-            }
-            else
-            {
-                value = Convert.ToString(random.Next(0, 250));
-                amplitudeNumericUpDown.Text = value;
-                value = Convert.ToString(random.Next(0, 255));
-                timeNumericUpDown.Text = value;
-                value = Convert.ToString(random.Next(0, 300));
-                frequencyNumericUpDown.Text = value;
-                value = Convert.ToString(random.Next(0, 354));
-                initialPhaseNumericUpDown.Text = value;
-            }
-  
+        private void SelectMovementBox_VisibleChanged(object sender, EventArgs e)
+        {
+            movement = null;
+        }
+
+        private void MovementForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Cleaner();
         }
     }
 }

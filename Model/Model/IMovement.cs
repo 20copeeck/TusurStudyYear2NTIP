@@ -9,7 +9,7 @@ namespace Model
     /// <summary>
     /// Движение
     /// </summary>
-   public interface IMovement
+    public interface IMovement
     {
         /// <summary>
         /// Получить новую координату

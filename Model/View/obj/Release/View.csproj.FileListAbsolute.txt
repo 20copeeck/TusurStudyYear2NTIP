@@ -11,3 +11,4 @@ D:\NTVP\Labs\Model\View\obj\Release\View.csproj.GenerateResource.Cache
 D:\NTVP\Labs\Model\View\obj\Release\View.csproj.CoreCompileInputs.cache
 D:\NTVP\Labs\Model\View\obj\Release\View.exe
 D:\NTVP\Labs\Model\View\obj\Release\View.pdb
+D:\NTVP\Labs\Model\View\obj\Release\View.SearchForm.resources
