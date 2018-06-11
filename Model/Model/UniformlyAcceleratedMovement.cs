@@ -55,7 +55,21 @@ namespace Model
         public double InitialCoordinate
         {
             get { return _initialCoordinate; }
-            set { _initialCoordinate = value; }
+            set
+            {
+                if (value < int.MinValue)
+                {
+                    throw new Exception("Начальная координата не может быть меньше int.MinValue!");
+                }
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Начальная координата не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _initialCoordinate = value;
+                }
+            }
         }
 
         /// <summary>
@@ -66,11 +80,18 @@ namespace Model
             get { return _initialSpeed; }
             set
             {
-                if (value < 0)
+               if (value < 0)
                 {
                     throw new Exception("Скорость не может быть отрицательной!");
                 }
-                _initialSpeed = value;
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Скорость не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _initialSpeed = value;
+                }
             }
         }
 
@@ -80,7 +101,21 @@ namespace Model
         public double Acceleration
         {
             get { return _acceleration; }
-            set { _acceleration = value; }
+            set
+            {
+                if (value < int.MinValue)
+                {
+                    throw new Exception("Ускорение не может быть меньше int.MinValue!");
+                }
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Ускорение не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _acceleration = value;
+                } 
+            }
         }
 
         /// <summary>
@@ -95,7 +130,14 @@ namespace Model
                 {
                     throw new Exception("Время не может быть отрицательным!");
                 }
-                _time = value;
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Время не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _time = value;
+                }
             }
         }
 

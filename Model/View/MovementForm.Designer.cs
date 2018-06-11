@@ -195,23 +195,13 @@
             this.accelerationNumericUpDown.DecimalPlaces = 2;
             this.accelerationNumericUpDown.Location = new System.Drawing.Point(199, 88);
             this.accelerationNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
+            1000,
             0,
             0,
             0});
-            this.accelerationNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
             this.accelerationNumericUpDown.Name = "accelerationNumericUpDown";
             this.accelerationNumericUpDown.Size = new System.Drawing.Size(101, 22);
             this.accelerationNumericUpDown.TabIndex = 2;
-            this.accelerationNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
             // 
             // speedNumericUpDown
             // 
@@ -220,23 +210,13 @@
             this.speedNumericUpDown.DecimalPlaces = 2;
             this.speedNumericUpDown.Location = new System.Drawing.Point(199, 60);
             this.speedNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
+            1000,
             0,
             0,
             0});
-            this.speedNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
             this.speedNumericUpDown.Name = "speedNumericUpDown";
             this.speedNumericUpDown.Size = new System.Drawing.Size(101, 22);
             this.speedNumericUpDown.TabIndex = 1;
-            this.speedNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
             // 
             // initialCoordinateNumericUpDown
             // 
@@ -245,12 +225,12 @@
             this.initialCoordinateNumericUpDown.DecimalPlaces = 2;
             this.initialCoordinateNumericUpDown.Location = new System.Drawing.Point(199, 32);
             this.initialCoordinateNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
+            1000,
             0,
             0,
             0});
             this.initialCoordinateNumericUpDown.Minimum = new decimal(new int[] {
-            9999,
+            1000,
             0,
             0,
             -2147483648});
@@ -290,12 +270,12 @@
             this.initialPhaseNumericUpDown.DecimalPlaces = 2;
             this.initialPhaseNumericUpDown.Location = new System.Drawing.Point(199, 88);
             this.initialPhaseNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
+            1000,
             0,
             0,
             0});
             this.initialPhaseNumericUpDown.Minimum = new decimal(new int[] {
-            9999,
+            1000,
             0,
             0,
             -2147483648});
@@ -310,7 +290,7 @@
             this.frequencyNumericUpDown.DecimalPlaces = 2;
             this.frequencyNumericUpDown.Location = new System.Drawing.Point(199, 60);
             this.frequencyNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
+            1000,
             0,
             0,
             0});
@@ -335,7 +315,7 @@
             this.amplitudeNumericUpDown.DecimalPlaces = 2;
             this.amplitudeNumericUpDown.Location = new System.Drawing.Point(199, 32);
             this.amplitudeNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
+            1000,
             0,
             0,
             0});
@@ -358,7 +338,7 @@
             this.timeNumericUpDown.DecimalPlaces = 2;
             this.timeNumericUpDown.Location = new System.Drawing.Point(211, 47);
             this.timeNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
+            1000,
             0,
             0,
             0});

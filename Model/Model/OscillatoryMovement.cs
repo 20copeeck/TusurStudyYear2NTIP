@@ -62,7 +62,14 @@ namespace Model
                 {
                     throw new Exception("Амплитуда не может быть отрицательной или равняться нулю!");
                 }
-                _amplitude = value;
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Амплитуда не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _amplitude = value;
+                }
             }
         }
 
@@ -78,7 +85,14 @@ namespace Model
                 {
                     throw new Exception("Частота не может быть отрицательной или равняться нулю!");
                 }
-                _frequency = value;
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Частота не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _frequency = value;
+                } 
             }
         }
 
@@ -88,7 +102,21 @@ namespace Model
         public double InitialPhase
         {
             get { return _initialPhase; }
-            set { _initialPhase = value; }
+            set
+            {
+                if (value < int.MinValue)
+                {
+                    throw new Exception("Начальная фаза не может быть меньше int.MinValue!");
+                }
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Начальная фаза не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _initialPhase = value;
+                }
+            }
         }
 
         /// <summary>
@@ -103,7 +131,14 @@ namespace Model
                 {
                     throw new Exception("Время не может быть отрицательным!");
                 }
-                _time = value;
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Время не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _time = value;
+                }
             }
         }
 
