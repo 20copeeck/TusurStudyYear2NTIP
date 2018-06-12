@@ -3,26 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Равноускоренное движение
     /// </summary>
+    [DataContract]
     public class UniformlyAcceleratedMovement : IMovement
     {
         /// <summary>
         /// Начальная координата
         /// </summary>
+        [DataMember]
         private double _initialCoordinate;
         /// <summary>
         /// Начальная скорость в м/с
         /// </summary>
+        [DataMember]
         private double _initialSpeed;
         /// <summary>
         /// Ускорение
         /// </summary>
-        private double _acceleration;  
+        [DataMember]
+        private double _acceleration;
+        /// <summary>
+        /// Время в сек.
+        /// </summary>
+        [DataMember]
+        private double _time;
 
         /// <summary>
         /// Конструктор класса
@@ -30,11 +40,13 @@ namespace Model
         /// <param name="initialCoordinate">Начальная координата</param>
         /// <param name="initialSpeed">Начальная скорость в м/с</param>
         /// <param name="acceleration">Ускорение</param>
-        public UniformlyAcceleratedMovement(double initialCoordinate, double initialSpeed, double acceleration)
+        /// <param name="time">Время в сек.</param>
+        public UniformlyAcceleratedMovement(double initialCoordinate, double initialSpeed, double acceleration, double time)
         {
             InitialCoordinate = initialCoordinate;
             Speed = initialSpeed;
             Acceleration = acceleration;
+            Time = time;
         }
 
         /// <summary>
@@ -43,7 +55,21 @@ namespace Model
         public double InitialCoordinate
         {
             get { return _initialCoordinate; }
-            set { _initialCoordinate = value; }
+            set
+            {
+                if (value < int.MinValue)
+                {
+                    throw new Exception("Начальная координата не может быть меньше int.MinValue!");
+                }
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Начальная координата не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _initialCoordinate = value;
+                }
+            }
         }
 
         /// <summary>
@@ -54,11 +80,18 @@ namespace Model
             get { return _initialSpeed; }
             set
             {
-                if (value < 0)
+               if (value < 0)
                 {
                     throw new Exception("Скорость не может быть отрицательной!");
                 }
-                _initialSpeed = value;
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Скорость не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _initialSpeed = value;
+                }
             }
         }
 
@@ -68,18 +101,64 @@ namespace Model
         public double Acceleration
         {
             get { return _acceleration; }
-            set { _acceleration = value; }
+            set
+            {
+                if (value < int.MinValue)
+                {
+                    throw new Exception("Ускорение не может быть меньше int.MinValue!");
+                }
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Ускорение не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _acceleration = value;
+                } 
+            }
         }
 
         /// <summary>
-        /// Вычисление новой координаты
+        /// Получить или вернуть время
         /// </summary>
-        /// <param name="time">Время в секундах</param>
-        /// <returns>Значение новой координаты</returns>
-        public double CalculateNewCoordinate(int time)
+        public double Time
         {
-            double newCoordinate = this._initialCoordinate + this._initialSpeed * time + 1.0 / 2 * this._acceleration * time * time; 
-            return newCoordinate;
+            get { return _time; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Время не может быть отрицательным!");
+                }
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Время не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _time = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получить новую координату
+        /// </summary>
+        public double NewCoordinate
+        {
+            get
+            {
+                double newCoordinate = this._initialCoordinate + this._initialSpeed * this._time + 1.0 / 2 * this._acceleration * this._time * this._time;
+                return newCoordinate;
+            }
+        }
+
+        /// <summary>
+        /// Получить тип движения
+        /// </summary>
+        public string Type
+        {
+            get { return "Равноускоренное движение"; }
         }
     }
 }

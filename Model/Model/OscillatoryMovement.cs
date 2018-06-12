@@ -3,26 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
+
     /// <summary>
     /// Колебательное движение
     /// </summary>
+    [DataContract]
     public class OscillatoryMovement : IMovement
     {
         /// <summary>
         /// Амплитуда
         /// </summary>
+        [DataMember]
         private double _amplitude;
         /// <summary>
         /// Частота
         /// </summary>
+        [DataMember]
         private double _frequency;
         /// <summary>
         /// Начальная фаза в градусах
         /// </summary>
+        [DataMember]
         private double _initialPhase;
+        /// <summary>
+        /// Время в сек.
+        /// </summary>
+        [DataMember]
+        private double _time;
 
         /// <summary>
         /// Конструктор класса
@@ -30,11 +41,13 @@ namespace Model
         /// <param name="amplitude">Амплитуда</param>
         /// <param name="frequency">Частота</param>
         /// <param name="initialPhase">Начальная фаза в градусах</param>
-        public OscillatoryMovement(double amplitude, double frequency, double initialPhase)
+        /// <param name="time">Время в сек.</param>
+        public OscillatoryMovement(double amplitude, double frequency, double initialPhase, double time)
         {
             Amplitude = amplitude;
             Frequency = frequency;
             InitialPhase = initialPhase;
+            Time = time;
         }
 
         /// <summary>
@@ -49,7 +62,14 @@ namespace Model
                 {
                     throw new Exception("Амплитуда не может быть отрицательной или равняться нулю!");
                 }
-                _amplitude = value;
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Амплитуда не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _amplitude = value;
+                }
             }
         }
 
@@ -65,7 +85,14 @@ namespace Model
                 {
                     throw new Exception("Частота не может быть отрицательной или равняться нулю!");
                 }
-                _frequency = value;
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Частота не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _frequency = value;
+                } 
             }
         }
 
@@ -75,18 +102,64 @@ namespace Model
         public double InitialPhase
         {
             get { return _initialPhase; }
-            set { _initialPhase = value; }
+            set
+            {
+                if (value < int.MinValue)
+                {
+                    throw new Exception("Начальная фаза не может быть меньше int.MinValue!");
+                }
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Начальная фаза не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _initialPhase = value;
+                }
+            }
         }
 
         /// <summary>
-        /// Вычисление новой координаты
+        /// Получить или вернуть время
         /// </summary>
-        /// <param name="time">Время в секундах</param>
-        /// <returns>Значение новой координаты</returns>
-        public double CalculateNewCoordinate(int time)
+        public double Time
         {
-            double newCoordinate = this._amplitude * Math.Cos((this._frequency * time + this._initialPhase) * 180 / Math.PI);
-            return newCoordinate;
+            get { return _time; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Время не может быть отрицательным!");
+                }
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Время не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _time = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получить новую координату
+        /// </summary>
+        public double NewCoordinate
+        {
+            get
+            {
+                double newCoordinate = this._amplitude * Math.Cos((this._frequency * this._time + this._initialPhase) * 180 / Math.PI);
+                return newCoordinate;
+            }
+        }
+
+        /// <summary>
+        /// Получить тип движения
+        /// </summary>
+        public string Type
+        {
+            get { return "Колебательное движение"; }
         }
     }
 }

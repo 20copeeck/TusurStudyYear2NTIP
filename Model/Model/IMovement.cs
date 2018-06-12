@@ -9,13 +9,16 @@ namespace Model
     /// <summary>
     /// Движение
     /// </summary>
-   public interface IMovement
+    public interface IMovement
     {
         /// <summary>
-        /// Метод позволяет рассчитать значение новой координаты
+        /// Получить новую координату
         /// </summary>
-        /// <param name="time">Время в секундах</param>
-        /// <returns>Возвращает значение новой координаты</returns>
-        double CalculateNewCoordinate(int time);
+        double NewCoordinate { get; }
+        
+        /// <summary>
+        /// Получить тип движения
+        /// </summary>
+        string Type { get; }
     }
 }

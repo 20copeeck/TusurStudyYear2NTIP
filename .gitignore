@@ -1,6 +1,10 @@
 Model/.vs/
-Model/ConsoleLoader/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
-Model/ConsoleLoader/obj/Debug/
-Model/Model/obj/Debug/
-Model/ConsoleLoader/App.config
-Model/View/obj/Debug/
+Model/ConsoleLoader/obj/
+Model/ConsoleLoader/bin/
+Model/Model/obj/
+Model/Model/bin/
+Model/View/obj/
+Model/View/bin/
+Model/UnitTests/obj/
+Model/UnitTests/bin/
+Model/packages/

@@ -1,34 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Равномерное движение
     /// </summary>
+    [DataContract]
     public class UniformlyMovement : IMovement
     {
         /// <summary>
         /// Начальная координата
         /// </summary>
+        [DataMember]
         private double _initialCoordinate;
         /// <summary>
         /// Скорость в м/с
         /// </summary>
+        [DataMember]
         private double _speed;
+        /// <summary>
+        /// Время в сек.
+        /// </summary>
+        [DataMember]
+        private double _time;
+
+        public UniformlyMovement(){ }
 
         /// <summary>
         /// Конструктор класса
         /// </summary>
         /// <param name="initialCoordinate">Начальная координата</param>
         /// <param name="speed">Скорость в м/с</param>
-        public UniformlyMovement(double initialCoordinate, double speed)
+        /// <param name="time">Время в сек.</param>
+        public UniformlyMovement(double initialCoordinate, double speed, double time)
         {
             InitialCoordinate = initialCoordinate;
             Speed = speed;
+            Time = time;
         }
 
         /// <summary>
@@ -37,7 +51,21 @@ namespace Model
         public double InitialCoordinate
         {
             get { return _initialCoordinate; }
-            set { _initialCoordinate = value; }
+            set
+            {
+                if (value < int.MinValue)
+                {
+                    throw new Exception("Начальная координата не может быть меньше int.MinValue!");
+                }
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Начальная координата не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _initialCoordinate = value;
+                }   
+            }
         }
 
         /// <summary>
@@ -52,19 +80,58 @@ namespace Model
                 {
                     throw new Exception("Скорость не может быть отрицательной!");
                 }
-                _speed = value;
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Скорость не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _speed = value;
+                }
             }
         }
 
         /// <summary>
-        /// Вычисление новой координаты
+        /// Получить или вернуть время
         /// </summary>
-        /// <param name="time">Время в секудах</param>
-        /// <returns>Значение новой координаты</returns>
-        public double CalculateNewCoordinate(int time)
+        public double Time
         {
-            double newCoordinate = this._initialCoordinate + time * this._speed;
-            return newCoordinate;
+            get { return _time; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Время не может быть отрицательным!");
+                }
+                else if (value > uint.MaxValue)
+                {
+                    throw new Exception("Время не может быть больше uint.MaxValue!");
+                }
+                else
+                {
+                    _time = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получить новую координату
+        /// </summary>
+        public double NewCoordinate
+        {
+            get
+            {
+                double newCoordinate = this._initialCoordinate + this._time * this._speed;
+                return newCoordinate;
+            }
+        }
+
+        /// <summary>
+        /// Получить тип движения
+        /// </summary>
+        public string Type
+        {
+            get { return "Равномерное движение"; }
         }
     }
 }
