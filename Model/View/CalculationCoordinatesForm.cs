@@ -21,13 +21,8 @@ namespace View
         /// <summary>
         /// Список типов движений
         /// </summary>
-        List<IMovement> _moverment;
-
-        /// <summary>
-        /// Форма добавления нового объекта
-        /// </summary>
-        MovementForm _addObjectForm;
-
+        List<IMovement> _movement;
+        
         /// <summary>
         /// Класс для записи объектов в json-файл
         /// </summary>
@@ -39,17 +34,18 @@ namespace View
         public CalculationCoordinatesForm()
         {
             InitializeComponent();
-            _moverment = new List<IMovement>();
-            _addObjectForm = new MovementForm();
-
-            bindingSource.DataSource = _moverment;
+            _movement = new List<IMovement>();
+            
+            bindingSource.DataSource = _movement;
             dataGridView1.DataSource = bindingSource;
 
-            List<Type> knownTypeList = new List<Type>();
-            knownTypeList.Add(typeof(UniformlyMovement));
-            knownTypeList.Add(typeof(UniformlyAcceleratedMovement));
-            knownTypeList.Add(typeof(OscillatoryMovement));
-
+            List<Type> knownTypeList = new List<Type>
+            {
+                typeof(UniformlyMovement),
+                typeof(UniformlyAcceleratedMovement),
+                typeof(OscillatoryMovement)
+            };
+            
             _serializer = new DataContractJsonSerializer(typeof(List<IMovement>), knownTypeList);
         }
 
@@ -68,10 +64,34 @@ namespace View
 
         private void AddSolid_Click(object sender, EventArgs e)
         {
-            _addObjectForm.ShowDialog();
-            if (_addObjectForm.movement != null)
+            MovementForm movementObjectForm = new MovementForm()
             {
-                bindingSource.Add(_addObjectForm.movement);
+                ReadOnly = false
+            };
+
+            movementObjectForm.ShowDialog();
+
+            if (movementObjectForm.DialogResult != DialogResult.OK) return;
+            if (movementObjectForm.Movement != null)
+            {
+                bindingSource.Add(movementObjectForm.Movement);
+            }
+        }
+
+        private void ModifyButton_Click(object sender, EventArgs e)
+        {
+            MovementForm modifyObjectForm = new MovementForm()
+            {
+                Movement = _movement[dataGridView1.CurrentRow.Index],
+                ReadOnly = false
+            };
+
+            modifyObjectForm.ShowDialog();
+
+            if (modifyObjectForm.DialogResult != DialogResult.OK) return;
+            if (modifyObjectForm.Movement != null)
+            {
+                _movement[dataGridView1.CurrentRow.Index] = modifyObjectForm.Movement;
             }
         }
 
@@ -84,10 +104,10 @@ namespace View
             }
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog.AddExtension = true;
-            openFileDialog.Filter = "Sanches files|*.Sanches";
+            openFileDialog.Filter = "Movement files|*.Movement";
             DialogResult result = openFileDialog.ShowDialog();
 
             if (result == DialogResult.Cancel)
@@ -109,10 +129,10 @@ namespace View
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFileDialog.AddExtension = true;
-            saveFileDialog.Filter = "Sanches Files|*.Sanches";
+            saveFileDialog.Filter = "Movement Files|*.Movement";
             DialogResult result = saveFileDialog.ShowDialog();
 
             if (result == DialogResult.Cancel)
@@ -122,13 +142,13 @@ namespace View
             else
             {
                 FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate);
-                _serializer.WriteObject(fileStream, _moverment);
+                _serializer.WriteObject(fileStream, _movement);
                 fileStream.Dispose();
             }
                 
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
             for(int index = 0; index < dataGridView1.RowCount; index++)
             {
@@ -160,6 +180,7 @@ namespace View
             switch (e.KeyCode)
             {
                 case Keys.F6:
+#if DEBUG
                     if (e.Control)
                     {
                         Random random = new Random();
@@ -181,10 +202,11 @@ namespace View
                         }
                         bindingSource.Add(movement);
                     }
-                    break;
-                default:
+#endif
                     break;
             }
         }
+
+        
     }
 }

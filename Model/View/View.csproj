@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MovementControl\OscillatoryMovementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MovementControl\OscillatoryMovementControl.Designer.cs">
+      <DependentUpon>OscillatoryMovementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MovementControl\UniformlyAcceleratedMovementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MovementControl\UniformlyAcceleratedMovementControl.Designer.cs">
+      <DependentUpon>UniformlyAcceleratedMovementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MovementControl\UniformlyMovementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MovementControl\UniformlyMovementControl.Designer.cs">
+      <DependentUpon>UniformlyMovementControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MovementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MovementControl\OscillatoryMovementControl.resx">
+      <DependentUpon>OscillatoryMovementControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MovementForm.resx">
       <DependentUpon>MovementForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +96,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MovementControl\UniformlyAcceleratedMovementControl.resx">
+      <DependentUpon>UniformlyAcceleratedMovementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovementControl\UniformlyMovementControl.resx">
+      <DependentUpon>UniformlyMovementControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
