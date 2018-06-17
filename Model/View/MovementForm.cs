@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
-using View.MovementControl;
 
 namespace View
 {
@@ -26,15 +25,15 @@ namespace View
             {
                 if (SelectMovementBox.Text == "Равномерное")
                 {
-                    return uniformlyMovementControl1.UniformlyMovement;
+                    return uniformlyMovementControl.UniformlyMovement;
                 }
                 else if (SelectMovementBox.Text == "Равноускоренное")
                 {
-                    return uniformlyAcceleratedMovementControl1.UniformlyAcceleratedMovement;
+                    return uniformlyAcceleratedMovementControl.UniformlyAcceleratedMovement;
                 }
                 else if (SelectMovementBox.Text == "Колебательное")
                 {
-                    return oscillatoryMovementControl1.OscillatoryMovement;
+                    return oscillatoryMovementControl.OscillatoryMovement;
                 }
                 else
                 {
@@ -43,17 +42,20 @@ namespace View
             }
             set
             {
-                if (value is UniformlyMovement uniformlyMovement)
+                if (value is UniformlyMovement _uniformlyMovement)
                 {
-                    uniformlyMovementControl1.UniformlyMovement = uniformlyMovement;
+                    uniformlyMovementControl.UniformlyMovement = _uniformlyMovement;
+                    SelectMovementBox.SelectedIndex = 0;
                 }
-                else if (value is UniformlyAcceleratedMovement uniformlyAcceleratedMovement)
+                else if (value is UniformlyAcceleratedMovement _uniformlyAcceleratedMovement)
                 {
-                    uniformlyAcceleratedMovementControl1.UniformlyAcceleratedMovement = uniformlyAcceleratedMovement;
+                    uniformlyAcceleratedMovementControl.UniformlyAcceleratedMovement = _uniformlyAcceleratedMovement;
+                    SelectMovementBox.SelectedIndex = 1;
                 }
-                else if (value is OscillatoryMovement oscillatoryMovement)
+                else if (value is OscillatoryMovement _oscillatoryMovement)
                 {
-                    oscillatoryMovementControl1.OscillatoryMovement = oscillatoryMovement;
+                    oscillatoryMovementControl.OscillatoryMovement = _oscillatoryMovement;
+                    SelectMovementBox.SelectedIndex = 2;
                 }
             }
         }
@@ -62,9 +64,9 @@ namespace View
         {
             set
             {
-                uniformlyMovementControl1.ReadOnly = value;
-                uniformlyAcceleratedMovementControl1.ReadOnly = value;
-                oscillatoryMovementControl1.ReadOnly = value;
+                uniformlyMovementControl.ReadOnly = value;
+                uniformlyAcceleratedMovementControl.ReadOnly = value;
+                oscillatoryMovementControl.ReadOnly = value;
             }
         }
 
@@ -73,7 +75,7 @@ namespace View
         /// </summary>
         /// <param name="bindingSource">Источник данных</param>
         public MovementForm()
-        {  
+        {
             InitializeComponent();
         }
 
@@ -82,54 +84,50 @@ namespace View
         /// </summary>
         private void Cleaner()
         {
-            uniformlyMovementControl1.Visible = false;
-            uniformlyAcceleratedMovementControl1.Visible = false;
-            oscillatoryMovementControl1.Visible = false;
-            
-            SelectMovementBox.SelectedIndex = -1;
+            uniformlyMovementControl.Visible = false;
+            uniformlyAcceleratedMovementControl.Visible = false;
+            oscillatoryMovementControl.Visible = false;
 
+            SelectMovementBox.SelectedIndex = -1;
             Close();
         }
+
 
         private void SelectMovementBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SelectMovementBox.Text == "Равномерное")
             {
-                uniformlyMovementControl1.Visible = true;
-                uniformlyAcceleratedMovementControl1.Visible = false;
-                oscillatoryMovementControl1.Visible = false;
+                uniformlyMovementControl.Visible = true;
+                uniformlyAcceleratedMovementControl.Visible = false;
+                oscillatoryMovementControl.Visible = false;
             }
             else if (SelectMovementBox.Text == "Равноускоренное")
             {
-                uniformlyMovementControl1.Visible = false;
-                uniformlyAcceleratedMovementControl1.Visible = true;
-                oscillatoryMovementControl1.Visible = false;
+                uniformlyMovementControl.Visible = false;
+                uniformlyAcceleratedMovementControl.Visible = true;
+                oscillatoryMovementControl.Visible = false;
             }
             else
             {
-                uniformlyMovementControl1.Visible = false;
-                uniformlyAcceleratedMovementControl1.Visible = false;
-                oscillatoryMovementControl1.Visible = true;
+                uniformlyMovementControl.Visible = false;
+                uniformlyAcceleratedMovementControl.Visible = false;
+                oscillatoryMovementControl.Visible = true;
             }
         }
-        
-        private void AddObjectForm_Load(object sender, EventArgs e)
-        {
-            uniformlyMovementControl1.Visible = false;
-            uniformlyAcceleratedMovementControl1.Visible = false;
-            oscillatoryMovementControl1.Visible = false;
 
-            this.Width = 353;
-            this.Height = 309;
-            uniformlyAcceleratedMovementControl1.Location = new System.Drawing.Point(-4, 45);
-            oscillatoryMovementControl1.Location = new System.Drawing.Point(-4, 45);
+        private void MovementForm_Load(object sender, EventArgs e)
+        {
+            this.Width = 343;
+            this.Height = 273;
+            uniformlyAcceleratedMovementControl.Location = new System.Drawing.Point(-1, 36);
+            oscillatoryMovementControl.Location = new System.Drawing.Point(-1, 36);
 
             SelectMovementBox.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
-            uniformlyMovementControl1.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
-            uniformlyAcceleratedMovementControl1.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
-            oscillatoryMovementControl1.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
+            uniformlyMovementControl.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
+            uniformlyAcceleratedMovementControl.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
+            oscillatoryMovementControl.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
             okButton.Anchor = (AnchorStyles.Right | AnchorStyles.Bottom);
-            Cansel.Anchor = (AnchorStyles.Right | AnchorStyles.Bottom);
-        }
+            closeButton.Anchor = (AnchorStyles.Right | AnchorStyles.Bottom);
+        }       
     }
 }

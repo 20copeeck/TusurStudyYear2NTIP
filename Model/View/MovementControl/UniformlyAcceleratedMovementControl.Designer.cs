@@ -1,4 +1,4 @@
-﻿namespace View
+﻿namespace View.MovementControl
 {
     partial class UniformlyAcceleratedMovementControl
     {
@@ -28,21 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.timeNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.timeLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.accelerationNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.accelerationLabel = new System.Windows.Forms.Label();
+            this.timeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.timeLabel = new System.Windows.Forms.Label();
             this.speedNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.initialCoordinateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.initialCoordinateLabel = new System.Windows.Forms.Label();
             this.speedLabel = new System.Windows.Forms.Label();
-            this.accelerationLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.timeNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accelerationNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.initialCoordinateNumericUpDown)).BeginInit();
             this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.accelerationNumericUpDown);
+            this.groupBox1.Controls.Add(this.accelerationLabel);
+            this.groupBox1.Controls.Add(this.timeNumericUpDown);
+            this.groupBox1.Controls.Add(this.timeLabel);
+            this.groupBox1.Controls.Add(this.speedNumericUpDown);
+            this.groupBox1.Controls.Add(this.initialCoordinateNumericUpDown);
+            this.groupBox1.Controls.Add(this.initialCoordinateLabel);
+            this.groupBox1.Controls.Add(this.speedLabel);
+            this.groupBox1.Location = new System.Drawing.Point(7, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(313, 136);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Характеристики";
+            // 
+            // accelerationNumericUpDown
+            // 
+            this.accelerationNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.accelerationNumericUpDown.DecimalPlaces = 2;
+            this.accelerationNumericUpDown.Location = new System.Drawing.Point(199, 105);
+            this.accelerationNumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.accelerationNumericUpDown.Name = "accelerationNumericUpDown";
+            this.accelerationNumericUpDown.Size = new System.Drawing.Size(101, 22);
+            this.accelerationNumericUpDown.TabIndex = 27;
+            // 
+            // accelerationLabel
+            // 
+            this.accelerationLabel.AutoSize = true;
+            this.accelerationLabel.Location = new System.Drawing.Point(6, 107);
+            this.accelerationLabel.Name = "accelerationLabel";
+            this.accelerationLabel.Size = new System.Drawing.Size(79, 17);
+            this.accelerationLabel.TabIndex = 26;
+            this.accelerationLabel.Text = "Ускорение";
             // 
             // timeNumericUpDown
             // 
@@ -77,41 +121,6 @@
             this.timeLabel.Size = new System.Drawing.Size(90, 17);
             this.timeLabel.TabIndex = 25;
             this.timeLabel.Text = "Время (сек.)";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.timeNumericUpDown);
-            this.groupBox1.Controls.Add(this.timeLabel);
-            this.groupBox1.Controls.Add(this.accelerationNumericUpDown);
-            this.groupBox1.Controls.Add(this.speedNumericUpDown);
-            this.groupBox1.Controls.Add(this.initialCoordinateNumericUpDown);
-            this.groupBox1.Controls.Add(this.initialCoordinateLabel);
-            this.groupBox1.Controls.Add(this.speedLabel);
-            this.groupBox1.Controls.Add(this.accelerationLabel);
-            this.groupBox1.Location = new System.Drawing.Point(7, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(313, 136);
-            this.groupBox1.TabIndex = 23;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Характеристики";
-            // 
-            // accelerationNumericUpDown
-            // 
-            this.accelerationNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.accelerationNumericUpDown.DecimalPlaces = 2;
-            this.accelerationNumericUpDown.Location = new System.Drawing.Point(199, 105);
-            this.accelerationNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.accelerationNumericUpDown.Name = "accelerationNumericUpDown";
-            this.accelerationNumericUpDown.Size = new System.Drawing.Size(101, 22);
-            this.accelerationNumericUpDown.TabIndex = 2;
             // 
             // speedNumericUpDown
             // 
@@ -166,16 +175,6 @@
             this.speedLabel.TabIndex = 6;
             this.speedLabel.Text = "Скорость (м/с)";
             // 
-            // accelerationLabel
-            // 
-            this.accelerationLabel.AutoSize = true;
-            this.accelerationLabel.Location = new System.Drawing.Point(6, 107);
-            this.accelerationLabel.Name = "accelerationLabel";
-            this.accelerationLabel.Size = new System.Drawing.Size(79, 17);
-            this.accelerationLabel.TabIndex = 10;
-            this.accelerationLabel.Text = "Ускорение";
-            this.accelerationLabel.Visible = false;
-            // 
             // UniformlyAcceleratedMovementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -183,10 +182,10 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "UniformlyAcceleratedMovementControl";
             this.Size = new System.Drawing.Size(329, 148);
-            ((System.ComponentModel.ISupportInitialize)(this.timeNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accelerationNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.initialCoordinateNumericUpDown)).EndInit();
             this.ResumeLayout(false);
@@ -195,14 +194,14 @@
 
         #endregion
 
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown timeNumericUpDown;
         private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.NumericUpDown accelerationNumericUpDown;
         private System.Windows.Forms.NumericUpDown speedNumericUpDown;
         private System.Windows.Forms.NumericUpDown initialCoordinateNumericUpDown;
         private System.Windows.Forms.Label initialCoordinateLabel;
         private System.Windows.Forms.Label speedLabel;
+        private System.Windows.Forms.NumericUpDown accelerationNumericUpDown;
         private System.Windows.Forms.Label accelerationLabel;
     }
 }

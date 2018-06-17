@@ -1,4 +1,4 @@
-﻿namespace View
+﻿namespace View.MovementControl
 {
     partial class UniformlyMovementControl
     {
@@ -54,8 +54,8 @@
             this.groupBox1.Controls.Add(this.speedLabel);
             this.groupBox1.Location = new System.Drawing.Point(7, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(313, 107);
-            this.groupBox1.TabIndex = 19;
+            this.groupBox1.Size = new System.Drawing.Size(313, 136);
+            this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Характеристики";
             // 
@@ -77,7 +77,7 @@
             131072});
             this.timeNumericUpDown.Name = "timeNumericUpDown";
             this.timeNumericUpDown.Size = new System.Drawing.Size(101, 22);
-            this.timeNumericUpDown.TabIndex = 21;
+            this.timeNumericUpDown.TabIndex = 24;
             this.timeNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
@@ -90,7 +90,7 @@
             this.timeLabel.Location = new System.Drawing.Point(6, 23);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(90, 17);
-            this.timeLabel.TabIndex = 22;
+            this.timeLabel.TabIndex = 25;
             this.timeLabel.Text = "Время (сек.)";
             // 
             // speedNumericUpDown
@@ -152,7 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
             this.Name = "UniformlyMovementControl";
-            this.Size = new System.Drawing.Size(329, 118);
+            this.Size = new System.Drawing.Size(329, 148);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timeNumericUpDown)).EndInit();
@@ -165,11 +165,11 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.NumericUpDown timeNumericUpDown;
+        private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.NumericUpDown speedNumericUpDown;
         private System.Windows.Forms.NumericUpDown initialCoordinateNumericUpDown;
         private System.Windows.Forms.Label initialCoordinateLabel;
         private System.Windows.Forms.Label speedLabel;
-        private System.Windows.Forms.NumericUpDown timeNumericUpDown;
-        private System.Windows.Forms.Label timeLabel;
     }
 }

@@ -80,18 +80,22 @@ namespace View
 
         private void ModifyButton_Click(object sender, EventArgs e)
         {
-            MovementForm modifyObjectForm = new MovementForm()
+            if (dataGridView1.SelectedCells.Count > 0)
             {
-                Movement = _movement[dataGridView1.CurrentRow.Index],
-                ReadOnly = false
-            };
+                MovementForm modifyObjectForm = new MovementForm()
+                {
+                    Movement = _movement[dataGridView1.CurrentRow.Index],
+                    ReadOnly = false
+                };
 
-            modifyObjectForm.ShowDialog();
+                modifyObjectForm.ShowDialog();
 
-            if (modifyObjectForm.DialogResult != DialogResult.OK) return;
-            if (modifyObjectForm.Movement != null)
-            {
-                _movement[dataGridView1.CurrentRow.Index] = modifyObjectForm.Movement;
+                if (modifyObjectForm.DialogResult != DialogResult.OK) return;
+                if (modifyObjectForm.Movement != null)
+                {
+                    _movement[dataGridView1.CurrentRow.Index] = modifyObjectForm.Movement;
+                    bindingSource.ResetCurrentItem();
+                }
             }
         }
 

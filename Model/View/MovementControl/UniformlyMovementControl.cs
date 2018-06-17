@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 
-namespace View
+namespace View.MovementControl
 {
     public partial class UniformlyMovementControl : UserControl
     {
@@ -25,19 +25,18 @@ namespace View
                 double time = Convert.ToDouble(timeNumericUpDown.Text);
                 double initialCoordinate = Convert.ToDouble(initialCoordinateNumericUpDown.Text);
                 double speed = Convert.ToDouble(speedNumericUpDown.Text);
-
                 return new UniformlyMovement(initialCoordinate, speed, time);
             }
             set
             {
-               if (value == null)
+                if (value == null)
                 {
                     return;
                 }
                 timeNumericUpDown.Text = Convert.ToString((value as UniformlyMovement).Time);
                 initialCoordinateNumericUpDown.Text = Convert.ToString((value as UniformlyMovement).InitialCoordinate);
                 speedNumericUpDown.Text = Convert.ToString((value as UniformlyMovement).Speed);
-            }  
+            }
         }
 
         public bool ReadOnly { get; set; } = true;

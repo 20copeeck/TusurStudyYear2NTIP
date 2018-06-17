@@ -4,11 +4,10 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Model;
+using  Model;
 
 namespace View.MovementControl
 {
@@ -24,9 +23,9 @@ namespace View.MovementControl
             get
             {
                 double time = Convert.ToDouble(timeNumericUpDown.Text);
+                double initialPhase = Convert.ToDouble(initialPhaseNumericUpDown.Text);
                 double amplitude = Convert.ToDouble(amplitudeNumericUpDown.Text);
                 double frequency = Convert.ToDouble(frequencyNumericUpDown.Text);
-                double initialPhase = Convert.ToDouble(initialPhaseNumericUpDown.Text);
                 return new OscillatoryMovement(amplitude, frequency, initialPhase, time);
             }
             set
@@ -36,9 +35,9 @@ namespace View.MovementControl
                     return;
                 }
                 timeNumericUpDown.Text = Convert.ToString((value as OscillatoryMovement).Time);
+                initialPhaseNumericUpDown.Text = Convert.ToString((value as OscillatoryMovement).InitialPhase);
                 amplitudeNumericUpDown.Text = Convert.ToString((value as OscillatoryMovement).Amplitude);
                 frequencyNumericUpDown.Text = Convert.ToString((value as OscillatoryMovement).Frequency);
-                initialPhaseNumericUpDown.Text = Convert.ToString((value as OscillatoryMovement).InitialPhase);
             }
         }
 

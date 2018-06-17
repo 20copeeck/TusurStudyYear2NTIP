@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculationCoordinatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalculationCoordinatesForm.Designer.cs">
+      <DependentUpon>CalculationCoordinatesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MovementControl\OscillatoryMovementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,22 +76,22 @@
     <Compile Include="MovementForm.Designer.cs">
       <DependentUpon>MovementForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CalculationCoordinatesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CalculationCoordinatesForm.Designer.cs">
-      <DependentUpon>CalculationCoordinatesForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CalculationCoordinatesForm.resx">
+      <DependentUpon>CalculationCoordinatesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MovementControl\OscillatoryMovementControl.resx">
       <DependentUpon>OscillatoryMovementControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MovementControl\UniformlyAcceleratedMovementControl.resx">
+      <DependentUpon>UniformlyAcceleratedMovementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovementControl\UniformlyMovementControl.resx">
+      <DependentUpon>UniformlyMovementControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MovementForm.resx">
       <DependentUpon>MovementForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CalculationCoordinatesForm.resx">
-      <DependentUpon>CalculationCoordinatesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,12 +102,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="MovementControl\UniformlyAcceleratedMovementControl.resx">
-      <DependentUpon>UniformlyAcceleratedMovementControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovementControl\UniformlyMovementControl.resx">
-      <DependentUpon>UniformlyMovementControl.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

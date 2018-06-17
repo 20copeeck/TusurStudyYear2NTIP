@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Model;
+using  Model;
 
-namespace View
+namespace View.MovementControl
 {
     public partial class UniformlyAcceleratedMovementControl : UserControl
     {
