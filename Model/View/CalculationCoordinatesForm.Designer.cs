@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            Model.UniformlyMovement uniformlyMovement1 = new Model.UniformlyMovement();
             this.ModifyButton = new System.Windows.Forms.Button();
             this.searchNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,48 +47,29 @@
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.groupBox1.SuspendLayout();
+            this.oscillatoryMovementControl1 = new View.MovementControl.OscillatoryMovementControl();
+            this.uniformlyAcceleratedMovementControl1 = new View.MovementControl.UniformlyAcceleratedMovementControl();
+            this.uniformlyMovementControl1 = new View.MovementControl.UniformlyMovementControl();
             ((System.ComponentModel.ISupportInitialize)(this.searchNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.ModifyButton);
-            this.groupBox1.Controls.Add(this.searchNumericUpDown);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.SearchButton);
-            this.groupBox1.Controls.Add(this.RemoveSolid);
-            this.groupBox1.Controls.Add(this.AddSolid);
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 31);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(432, 398);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Блок управления";
-            // 
             // ModifyButton
             // 
-            this.ModifyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ModifyButton.Location = new System.Drawing.Point(8, 366);
+            this.ModifyButton.Location = new System.Drawing.Point(15, 93);
             this.ModifyButton.Name = "ModifyButton";
-            this.ModifyButton.Size = new System.Drawing.Size(137, 26);
+            this.ModifyButton.Size = new System.Drawing.Size(130, 33);
             this.ModifyButton.TabIndex = 6;
-            this.ModifyButton.Text = "Изменить объект";
+            this.ModifyButton.Text = "Изменить";
             this.ModifyButton.UseVisualStyleBackColor = true;
             this.ModifyButton.Click += new System.EventHandler(this.ModifyButton_Click);
             // 
             // searchNumericUpDown
             // 
-            this.searchNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.searchNumericUpDown.DecimalPlaces = 2;
-            this.searchNumericUpDown.Location = new System.Drawing.Point(199, 337);
+            this.searchNumericUpDown.Location = new System.Drawing.Point(207, 42);
             this.searchNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -100,25 +81,23 @@
             0,
             -2147483648});
             this.searchNumericUpDown.Name = "searchNumericUpDown";
-            this.searchNumericUpDown.Size = new System.Drawing.Size(86, 22);
+            this.searchNumericUpDown.Size = new System.Drawing.Size(101, 22);
             this.searchNumericUpDown.TabIndex = 5;
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 339);
+            this.label1.Location = new System.Drawing.Point(12, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 17);
+            this.label1.Size = new System.Drawing.Size(174, 17);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Найти координату, больше";
+            this.label1.Text = "Найти координату более";
             // 
             // SearchButton
             // 
-            this.SearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchButton.Location = new System.Drawing.Point(291, 334);
+            this.SearchButton.Location = new System.Drawing.Point(178, 93);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(137, 26);
+            this.SearchButton.Size = new System.Drawing.Size(130, 33);
             this.SearchButton.TabIndex = 3;
             this.SearchButton.Text = "Поиск";
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -126,51 +105,47 @@
             // 
             // RemoveSolid
             // 
-            this.RemoveSolid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveSolid.Location = new System.Drawing.Point(291, 366);
+            this.RemoveSolid.Location = new System.Drawing.Point(178, 155);
             this.RemoveSolid.Name = "RemoveSolid";
-            this.RemoveSolid.Size = new System.Drawing.Size(137, 26);
+            this.RemoveSolid.Size = new System.Drawing.Size(130, 33);
             this.RemoveSolid.TabIndex = 2;
-            this.RemoveSolid.Text = "Удалить объект";
+            this.RemoveSolid.Text = "Удалить";
             this.RemoveSolid.UseVisualStyleBackColor = true;
             this.RemoveSolid.Click += new System.EventHandler(this.RemoveSolid_Click);
             // 
             // AddSolid
             // 
-            this.AddSolid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddSolid.Location = new System.Drawing.Point(148, 366);
+            this.AddSolid.Location = new System.Drawing.Point(15, 155);
             this.AddSolid.Name = "AddSolid";
-            this.AddSolid.Size = new System.Drawing.Size(137, 26);
+            this.AddSolid.Size = new System.Drawing.Size(130, 33);
             this.AddSolid.TabIndex = 1;
-            this.AddSolid.Text = "Добавить объект";
+            this.AddSolid.Text = "Добавить";
             this.AddSolid.UseVisualStyleBackColor = true;
             this.AddSolid.Click += new System.EventHandler(this.AddSolid_Click);
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.AppWorkspace;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 21);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Location = new System.Drawing.Point(335, 40);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(420, 307);
+            this.dataGridView1.Size = new System.Drawing.Size(420, 319);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // Column1
             // 
@@ -195,7 +170,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(456, 28);
+            this.menuStrip.Size = new System.Drawing.Size(1098, 28);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -226,22 +201,62 @@
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
+            // oscillatoryMovementControl1
+            // 
+            this.oscillatoryMovementControl1.Location = new System.Drawing.Point(765, 211);
+            this.oscillatoryMovementControl1.Name = "oscillatoryMovementControl1";
+            this.oscillatoryMovementControl1.ReadOnly = true;
+            this.oscillatoryMovementControl1.Size = new System.Drawing.Size(329, 148);
+            this.oscillatoryMovementControl1.TabIndex = 4;
+            this.oscillatoryMovementControl1.Visible = false;
+            // 
+            // uniformlyAcceleratedMovementControl1
+            // 
+            this.uniformlyAcceleratedMovementControl1.Location = new System.Drawing.Point(765, 40);
+            this.uniformlyAcceleratedMovementControl1.Name = "uniformlyAcceleratedMovementControl1";
+            this.uniformlyAcceleratedMovementControl1.ReadOnly = true;
+            this.uniformlyAcceleratedMovementControl1.Size = new System.Drawing.Size(329, 148);
+            this.uniformlyAcceleratedMovementControl1.TabIndex = 3;
+            this.uniformlyAcceleratedMovementControl1.Visible = false;
+            // 
+            // uniformlyMovementControl1
+            // 
+            this.uniformlyMovementControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.uniformlyMovementControl1.Location = new System.Drawing.Point(0, 222);
+            this.uniformlyMovementControl1.Name = "uniformlyMovementControl1";
+            this.uniformlyMovementControl1.ReadOnly = true;
+            this.uniformlyMovementControl1.Size = new System.Drawing.Size(329, 148);
+            this.uniformlyMovementControl1.TabIndex = 2;
+            uniformlyMovement1.InitialCoordinate = 0D;
+            uniformlyMovement1.Speed = 0D;
+            uniformlyMovement1.Time = 0.01D;
+            this.uniformlyMovementControl1.UniformlyMovement = uniformlyMovement1;
+            this.uniformlyMovementControl1.Visible = false;
+            // 
             // CalculationCoordinatesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 439);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1098, 371);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ModifyButton);
+            this.Controls.Add(this.oscillatoryMovementControl1);
+            this.Controls.Add(this.AddSolid);
+            this.Controls.Add(this.RemoveSolid);
+            this.Controls.Add(this.searchNumericUpDown);
+            this.Controls.Add(this.uniformlyAcceleratedMovementControl1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.uniformlyMovementControl1);
+            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.menuStrip);
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(474, 486);
+            this.MinimumSize = new System.Drawing.Size(789, 418);
             this.Name = "CalculationCoordinatesForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Рассчет координаты";
+            this.Load += new System.EventHandler(this.CalculationCoordinatesForm_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CalculationCoordinatesForm_KeyUp);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip.ResumeLayout(false);
@@ -253,8 +268,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button RemoveSolid;
         private System.Windows.Forms.Button AddSolid;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -271,6 +284,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Button ModifyButton;
+        private MovementControl.UniformlyMovementControl uniformlyMovementControl1;
+        private MovementControl.UniformlyAcceleratedMovementControl uniformlyAcceleratedMovementControl1;
+        private MovementControl.OscillatoryMovementControl oscillatoryMovementControl1;
     }
 }
 
