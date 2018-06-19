@@ -11,13 +11,22 @@ using  Model;
 
 namespace View.MovementControl
 {
+    /// <summary>
+    /// Контроллер колебательного движения
+    /// </summary>
     public partial class OscillatoryMovementControl : UserControl
     {
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
         public OscillatoryMovementControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Получает или задает параметры колебательного движения тела
+        /// </summary>
         public OscillatoryMovement OscillatoryMovement
         {
             get
@@ -41,6 +50,37 @@ namespace View.MovementControl
             }
         }
 
-        public bool ReadOnly { get; set; } = true;
+        /// <summary>
+        /// Получает или задает значение ReadOnly
+        /// </summary>
+        public bool ReadOnly
+        {
+            get
+            {
+                return timeNumericUpDown.ReadOnly;
+            }
+            set
+            {
+                timeNumericUpDown.ReadOnly = value;
+                initialPhaseNumericUpDown.ReadOnly = value;
+                amplitudeNumericUpDown.ReadOnly = value;
+                frequencyNumericUpDown.ReadOnly = value;
+
+                if (timeNumericUpDown.ReadOnly == true)
+                {
+                    timeNumericUpDown.Controls[0].Hide();
+                    initialPhaseNumericUpDown.Controls[0].Hide();
+                    amplitudeNumericUpDown.Controls[0].Hide();
+                    frequencyNumericUpDown.Controls[0].Hide();
+                }
+                else
+                {
+                    timeNumericUpDown.Controls[0].Show();
+                    initialPhaseNumericUpDown.Controls[0].Show();
+                    amplitudeNumericUpDown.Controls[0].Show();
+                    frequencyNumericUpDown.Controls[0].Show();
+                }
+            }
+        } 
     }
 }

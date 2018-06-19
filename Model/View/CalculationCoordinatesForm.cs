@@ -211,6 +211,40 @@ namespace View
             }
         }
 
-        
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var movement = _movement[dataGridView1.CurrentRow.Index];
+            if (movement is UniformlyMovement uniformlyMovement)
+            {
+                uniformlyMovementControl1.Visible = true;
+                uniformlyAcceleratedMovementControl1.Visible = false;
+                oscillatoryMovementControl1.Visible = false;
+                uniformlyMovementControl1.UniformlyMovement = uniformlyMovement;
+            }
+            else if (movement is UniformlyAcceleratedMovement uniformlyAcceleratedMovement)
+            {
+                uniformlyMovementControl1.Visible = false;
+                uniformlyAcceleratedMovementControl1.Visible = true;
+                oscillatoryMovementControl1.Visible = false;
+                uniformlyAcceleratedMovementControl1.UniformlyAcceleratedMovement = uniformlyAcceleratedMovement;
+            }
+            else if (movement is OscillatoryMovement oscillatoryMovement)
+            {
+                uniformlyMovementControl1.Visible = false;
+                uniformlyAcceleratedMovementControl1.Visible = false;
+                oscillatoryMovementControl1.Visible = true;
+                oscillatoryMovementControl1.OscillatoryMovement = oscillatoryMovement;
+            }
+        }
+
+        private void CalculationCoordinatesForm_Load(object sender, EventArgs e)
+        {
+            this.Width = 789; 
+            this.Height = 418;
+
+            uniformlyAcceleratedMovementControl1.Location = new System.Drawing.Point(0, 222);
+            oscillatoryMovementControl1.Location = new System.Drawing.Point(0, 222);
+            dataGridView1.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
+        }
     }
 }

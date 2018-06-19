@@ -11,13 +11,22 @@ using Model;
 
 namespace View.MovementControl
 {
+    /// <summary>
+    /// Контроллер равномерного движения
+    /// </summary>
     public partial class UniformlyMovementControl : UserControl
     {
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
         public UniformlyMovementControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Получает или задает параметры равномерного движения тела
+        /// </summary>
         public UniformlyMovement UniformlyMovement
         {
             get
@@ -39,6 +48,34 @@ namespace View.MovementControl
             }
         }
 
-        public bool ReadOnly { get; set; } = true;
+        /// <summary>
+        /// Получает или задает значение ReadOnly
+        /// </summary>
+        public bool ReadOnly
+        {
+            get
+            {
+                return timeNumericUpDown.ReadOnly;
+            }
+            set
+            {
+                timeNumericUpDown.ReadOnly = value;
+                initialCoordinateNumericUpDown.ReadOnly = value;
+                speedNumericUpDown.ReadOnly = value;
+
+                if (timeNumericUpDown.ReadOnly == true)
+                {
+                    timeNumericUpDown.Controls[0].Hide();
+                    initialCoordinateNumericUpDown.Controls[0].Hide();
+                    speedNumericUpDown.Controls[0].Hide();
+                }
+                else
+                {
+                    timeNumericUpDown.Controls[0].Show();
+                    initialCoordinateNumericUpDown.Controls[0].Show();
+                    speedNumericUpDown.Controls[0].Show();
+                }
+            }
+        } 
     }
 }

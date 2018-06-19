@@ -60,6 +60,9 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Задает значение ReadOnly
+        /// </summary>
         public bool ReadOnly
         {
             set

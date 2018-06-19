@@ -51,7 +51,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получает или возвращает амплитуду
+        /// Получает или задает амплитуду
         /// </summary>
         public double Amplitude
         {
@@ -74,7 +74,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получает или возвращает частоту
+        /// Получает или задает частоту
         /// </summary>
         public double Frequency
         {
@@ -97,7 +97,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получает или возвращает начальную фазу
+        /// Получает или задает начальную фазу
         /// </summary>
         public double InitialPhase
         {
@@ -120,7 +120,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получить или вернуть время
+        /// Получает или задает время
         /// </summary>
         public double Time
         {
@@ -143,7 +143,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получить новую координату
+        /// Получает новую координату
         /// </summary>
         public double NewCoordinate
         {
@@ -155,7 +155,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получить тип движения
+        /// Получает тип движения
         /// </summary>
         public string Type
         {
