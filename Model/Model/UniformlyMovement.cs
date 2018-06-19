@@ -30,6 +30,9 @@ namespace Model
         [DataMember]
         private double _time;
 
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
         public UniformlyMovement(){ }
 
         /// <summary>
@@ -46,7 +49,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получить или вернуть начальную координату
+        /// Получает или задает начальную координату
         /// </summary>
         public double InitialCoordinate
         {
@@ -69,7 +72,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получить или вернуть скорость
+        /// Получает или задает скорость
         /// </summary>
         public double Speed
         {
@@ -92,7 +95,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получить или вернуть время
+        /// Получает или задает время
         /// </summary>
         public double Time
         {
@@ -115,7 +118,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получить новую координату
+        /// Получает новую координату
         /// </summary>
         public double NewCoordinate
         {
@@ -127,7 +130,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Получить тип движения
+        /// Получает тип движения
         /// </summary>
         public string Type
         {

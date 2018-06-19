@@ -221,7 +221,6 @@
             // 
             // uniformlyMovementControl1
             // 
-            this.uniformlyMovementControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.uniformlyMovementControl1.Location = new System.Drawing.Point(0, 222);
             this.uniformlyMovementControl1.Name = "uniformlyMovementControl1";
             this.uniformlyMovementControl1.ReadOnly = true;

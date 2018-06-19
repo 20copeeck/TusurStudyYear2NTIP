@@ -11,13 +11,22 @@ using  Model;
 
 namespace View.MovementControl
 {
+    /// <summary>
+    /// Контроллер равноускоренного движения
+    /// </summary>
     public partial class UniformlyAcceleratedMovementControl : UserControl
     {
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
         public UniformlyAcceleratedMovementControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Получает или задает параметры равноускоренного движения тела
+        /// </summary>
         public UniformlyAcceleratedMovement UniformlyAcceleratedMovement
         {
             get
@@ -41,6 +50,37 @@ namespace View.MovementControl
             }
         }
 
-        public bool ReadOnly { get; set; } = true;
+        /// <summary>
+        /// Получает или задает значение ReadOnly
+        /// </summary>
+        public bool ReadOnly
+        {
+            get
+            {
+                return timeNumericUpDown.ReadOnly;
+            }
+            set
+            {
+                timeNumericUpDown.ReadOnly = value;
+                initialCoordinateNumericUpDown.ReadOnly = value;
+                speedNumericUpDown.ReadOnly = value;
+                accelerationNumericUpDown.ReadOnly = value;
+
+                if (timeNumericUpDown.ReadOnly == true)
+                {
+                    timeNumericUpDown.Controls[0].Hide();
+                    initialCoordinateNumericUpDown.Controls[0].Hide();
+                    speedNumericUpDown.Controls[0].Hide();
+                    accelerationNumericUpDown.Controls[0].Hide();
+                }
+                else
+                {
+                    timeNumericUpDown.Controls[0].Show();
+                    initialCoordinateNumericUpDown.Controls[0].Show();
+                    speedNumericUpDown.Controls[0].Show();
+                    accelerationNumericUpDown.Controls[0].Show();
+                }
+            }
+        }
     }
 }

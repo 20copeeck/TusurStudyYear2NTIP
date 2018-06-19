@@ -12,12 +12,12 @@ namespace Model
     public interface IMovement
     {
         /// <summary>
-        /// Получить новую координату
+        /// Получает новую координату
         /// </summary>
         double NewCoordinate { get; }
         
         /// <summary>
-        /// Получить тип движения
+        /// Получает тип движения
         /// </summary>
         string Type { get; }
     }
